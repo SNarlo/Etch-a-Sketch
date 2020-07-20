@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="master">
+        <div class="grid-container"></div>
+    </div>
+    
+</body>
+
+<script>
+
+    const gridContainer = document.querySelector('.grid-container');
+    function makeGrid(rows, cols) {
+        gridContainer.style.setProperty('--grid-rows', rows);
+        gridContainer.style.setProperty('--grid-cols', cols);
+        for (let i = 0; i < (rows * cols); i++) {
+            let cell = document.createElement('div');
+            cell.classList.add('cell');
+            gridContainer.append(cell)
+        }
+    }
+
+makeGrid(16, 16);
+    
+</script>
+
+</html>
+
+
+

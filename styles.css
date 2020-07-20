@@ -1,0 +1,19 @@
+
+.master {
+    display: flex;
+    justify-content: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-rows), 2em);
+    grid-template-rows: repeat(var(--grid-cols), 2em);
+    margin-top: 50px;
+}
+
+.cell {
+    border: 1px solid black;
+    width: auto;
+    height: auto;
+}
+
