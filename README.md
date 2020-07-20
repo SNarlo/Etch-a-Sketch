@@ -1,0 +1,1 @@
+An Etch-a-Sketch like game built with HTML, CSS and JS which uses DOM manipulation.
