@@ -8,26 +8,94 @@
 </head>
 
 <body>
-    <div class="master">
-        <div class="grid-container"></div>
+
+    <div class="buttons">
+        <button id="reset">Reset</button>
+        <button id="random">Random Colour</button>
     </div>
+    <div class="master"></div>
     
 </body>
 
 <script>
 
-    const gridContainer = document.querySelector('.grid-container');
+    // Variable which changes the colour of the cell
+    let colour = 'black';
+
+    // Creating the etch-a-sketch game field
     function makeGrid(rows, cols) {
+        let innerContainer = document.querySelector('.master');
+        let newContainer = document.createElement('div');
+        newContainer.classList.add('grid-container');
+        newContainer.id = 'gridC';
+        innerContainer.appendChild(newContainer);
+
+        const gridContainer = document.querySelector('.grid-container');  
         gridContainer.style.setProperty('--grid-rows', rows);
         gridContainer.style.setProperty('--grid-cols', cols);
+
+        let cellWidth = 450/rows + 'px';
+        let cellHeight = 450/cols +'px';
+        gridContainer.style.setProperty('--grid-width', cellWidth);
+        gridContainer.style.setProperty('--grid-height', cellHeight);
+
+
         for (let i = 0; i < (rows * cols); i++) {
             let cell = document.createElement('div');
             cell.classList.add('cell');
+            cell.id = i;
             gridContainer.append(cell)
         }
     }
 
-makeGrid(16, 16);
+    makeGrid(16, 16);
+    
+    // adding an event listener for when a mouse hovers over a cell, it paints it 
+    cellContainer = document.querySelector('.grid-container');
+    cellContainer.addEventListener('mouseover', setValue);
+    function setValue(e) {
+        value = e.target;
+        if (value.id >= 0) {
+            value.style.background = colour;
+        }
+    }
+
+    // function which removes an element
+    function removeElement(elementId) {
+        let element = document.getElementById(elementId)
+        element.remove();
+    }
+
+    //adding button functionality, when clicked will reset field 
+    buttonClass = document.querySelector('#reset');
+    buttonClass.addEventListener('click', reset);
+    function reset(a) {
+       
+        size = prompt("How many squares per side would you like?", 16);
+        removeElement('gridC');
+        makeGrid(size, size);
+        cellContainer = document.querySelector('.grid-container');
+        cellContainer.addEventListener('mouseover', setValue); 
+    }
+
+    function rgb() {
+        let randomR = Math.floor(Math.random() * 256);
+        let randomG = Math.floor(Math.random() * 256);
+        let randomB = Math.floor(Math.random() * 256);
+
+        return ("rgb(" + randomR + ", " + randomG + ", " + randomB + ")");
+    }
+
+
+    // Adding a button that when pushed makes each colour random
+    let randomColButton = document.querySelector('#random');
+    randomColButton.addEventListener('click', randomColour);
+        
+    function randomColour(e) {
+        colour = rgb();
+    }
+    
+
     
 </script>
 

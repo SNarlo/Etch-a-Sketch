@@ -4,16 +4,49 @@
     justify-content: center;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(var(--grid-rows), 2em);
-    grid-template-rows: repeat(var(--grid-cols), 2em);
-    margin-top: 50px;
-}
 
 .cell {
-    border: 1px solid black;
-    width: auto;
-    height: auto;
+    background-color: gainsboro;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-rows), var(--grid-width));
+    grid-template-rows: repeat(var(--grid-cols), var(--grid-height));
+    border: 30px solid red;
+    margin-top: 25px;
+    width: 450px;
+    height: 450px;
+}
+
+
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+#reset {
+    width: 100px;
+    height: 35px;
+}
+
+#reset, #random {
+    color: yellow;
+    background-color: red;
+    font-family: fantasy;
+    font-size: larger;
+    outline: 2px solid black;
+    margin-top: 15px;
+    border: 1px solid yellow;
+}
+
+#random {
+    width: 150px;
+    height: 35px;
+    margin-left: 20px;
+}
+
+#reset:active, #random:active {
+    box-shadow: 0 0 10px grey;
+}
